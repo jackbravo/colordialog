@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains \Drupal\color_dialog\Plugin\CKEditorPlugin\ColorDialog.
+ * Contains \Drupal\colordialog\Plugin\CKEditorPlugin\ColorDialog.
  */
 
-namespace Drupal\color_dialog\Plugin\CKEditorPlugin;
+namespace Drupal\colordialog\Plugin\CKEditorPlugin;
 
 use Drupal\ckeditor\CKEditorPluginBase;
 use Drupal\editor\Entity\Editor;
