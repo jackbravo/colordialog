@@ -1,0 +1,35 @@
+diff --git a/src/Plugin/CKEditorPlugin/ColorButton.php b/src/Plugin/CKEditorPlugin/ColorButton.php
+index 0915b8a..d28e762 100644
+--- a/src/Plugin/CKEditorPlugin/ColorButton.php
++++ b/src/Plugin/CKEditorPlugin/ColorButton.php
+@@ -25,7 +25,13 @@ class ColorButton extends CKEditorPluginBase implements CKEditorPluginConfigurab
+    * {@inheritdoc}
+    */
+   public function getDependencies(Editor $editor) {
+-    return ['panelbutton'];
++    $dependencies = ['panelbutton'];
++
++    if (\Drupal::moduleHandler()->moduleExists('colordialog')) {
++      $dependencies[] = 'colordialog';
++    }
++
++    return $dependencies;
+   }
+ 
+   /**
+@@ -43,7 +49,7 @@ class ColorButton extends CKEditorPluginBase implements CKEditorPluginConfigurab
+ 
+     // enableMore can only be supported if the Color Dialog plugin is present.
+     $config = [
+-      'colorButton_enableMore' => false,
++      'colorButton_enableMore' => \Drupal::moduleHandler()->moduleExists('colordialog'),
+       'colorButton_enableAutomatic' => true,
+     ];
+ 
+@@ -99,4 +105,4 @@ class ColorButton extends CKEditorPluginBase implements CKEditorPluginConfigurab
+       $form_state->setError($element, 'Only valid hex values are allowed (A-F, 0-9). No other symbols or letters are allowed. Please check your settings and try again.');
+     }
+   }
+-}
+\ No newline at end of file
++}
